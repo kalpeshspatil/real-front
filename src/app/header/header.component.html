@@ -1,0 +1,41 @@
+<div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <h3 style="  font: normal 36px 'Cookie', cursive;">Real<span style=" color: #17A2B8;  font: normal 36px 'Cookie', cursive;">Estate</span></h3>
+        </a>
+        <button (click)="openSideMenu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <button class="login-btn" (click)="openLogin('normal')" *ngIf="!isLogin">Login</button>
+            <button class="register-btn" (click)="  openRegistration()" *ngIf="!isLogin">Register</button>
+            <button class="register-btn" *ngIf="isLogin">{{fullName}}</button>
+
+            <button class="btn btn-info" (click)="addPropertyBtn()" style="margin-right: 0.9%;">Add Property</button>
+            <img src="assets/img/logout-btn.jpg" *ngIf="isLogin" style="width:1.3%; cursor: pointer;" (click)="logout()">
+        </div>
+    </nav>
+
+
+    <div id="mySidenav" class="sidenav">
+        <div>
+            <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+            <div class="icon-div">
+                <img class="profile-icon" src="/assets/img/profile-icon.png">
+                <div style="text-align:center;padding:3px">
+                    <button class="register-btn" *ngIf="isLogin">{{fullName}}</button>
+                </div>
+            </div>
+
+        </div>
+        <div style="padding: 6%;">
+            <a (click)="openLogin('normal')" *ngIf="!isLogin" (click)="closeNav()"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+            <a (click)="openRegistration()" *ngIf="!isLogin" (click)="closeNav()"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
+            <a (click)="addPropertyBtn()" (click)="closeNav()"><i class="fa fa-building-o" aria-hidden="true"></i> Add Property</a>
+            <a (click)="logout()" (click)="closeNav()"><i class="fa fa-sign-out" aria-hidden="true" ></i> Logout</a>
+        </div>
+
+    </div>
+</div>

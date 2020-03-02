@@ -1,0 +1,136 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@media screen and (max-width: 768px) {
+
+    .carousel-control-next {
+        z-index: 20;
+        right: 0% !important;
+    }
+    .carousel-control-prev {
+        z-index: 20;
+        left: 0% !important;
+    }
+    
+
+}
+
+.background {
+    background-image: url(assets/img/realbanner.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.invalid-input {
+    border: 1px solid red !important;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+    padding-bottom: 0.7em;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+    padding-bottom: 0.7em;
+    width: 100%;
+}
+
+.mat-grid-tile .mat-grid-tile-header {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    color: #080808 !important;
+    background: rgba(255, 248, 248, 0.38) !important;
+    overflow: hidden;
+    padding: 0 16px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-bottom: inset;
+}
+
+.mat-grid-tile {
+    box-shadow: 0 2px 20px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
+}
+
+.mat-grid-tile .mat-grid-tile-footer {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    color: #080808 !important;
+    background: rgba(255, 248, 248, 0.38) !important;
+    overflow: hidden;
+    padding: 0 16px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: outset;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+    padding-bottom: 0px !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+    margin-top: -11px !important;
+}
+
+.mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline {
+    display: none !important;
+}
+
+.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+.mat-form-field-empty.mat-form-field-label {
+    display: none !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    bottom: 1.25em;
+    display: none !important;
+}
+
+.carousel-indicators {
+    z-index: 0 !important;
+    visibility: hidden !important;
+}
+
+.carousel-control-prev {
+    z-index: 20;
+    left: -15% !important;
+}
+
+.carousel-control-next {
+    z-index: 20;
+    right: -15% !important;
+}
+
+.carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: -6px;
+    left: 15%;
+    z-index: 10;
+    padding-bottom: -6px !important;
+    color: #fff;
+    text-align: center;
+    top: 0px !important;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+.carousel-item {
+    height: 175px;
+}
+
+.cdk-overlay-pane {
+    max-width: 97vw !important;
+}

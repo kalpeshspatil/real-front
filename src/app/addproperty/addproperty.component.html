@@ -1,0 +1,1049 @@
+<div class="page-head-img"></div>
+<mat-card class="add-prop-card">
+
+    <!-- (ngSubmit) = "onClickSubmit(addPropertyForm.value)"  -->
+    <form #addPropertyForm="ngForm">
+        <div class="mat-card-tit">Add Property Details</div>
+        <div class="alert alert-danger" role="alert" *ngIf="error_msg!=''" style="text-align: center; width: 100%;">
+            {{error_msg}}
+        </div>
+        <div style="padding:2%;text-align: center;" *ngIf="!displayStepper">
+            <div _ngcontent-sdi-c2="" class="div-bottom-margin"><label _ngcontent-sdi-c2="" class="label-info-tit">Property
+				Type</label></div>
+            <mat-button-toggle-group name="propertyType" aria-label="Font Style" [value]="toggle" (change)="toggleView($event)" class="display-row">
+                <mat-button-toggle [value]="'Residential'" class="togle-btn">Residential</mat-button-toggle>
+                <mat-button-toggle [value]="'Commercial'" class="togle-btn">Commercial</mat-button-toggle>
+            </mat-button-toggle-group>
+
+
+            <div style="margin-top: 50px;" *ngIf="toggle=='Residential'">
+                <div class="div-bottom-margin"><label class="label-info-tit">Select Ad Type</label></div>
+                <mat-button-toggle-group name="propertyType1" aria-label="Font Style" *ngIf="toggle=='Residential'" #group2="matButtonToggleGroup" [value]="typeOfAd" (change)="typeOdAdView($event)" class="display-row">
+                    <mat-button-toggle value="Resale" class="togle-btn">Resale</mat-button-toggle>
+                    <mat-button-toggle value="Rent" class="togle-btn">Rent</mat-button-toggle>
+                    <mat-button-toggle value="HostelPG" class="togle-btn">Hostel/PG</mat-button-toggle>
+                    <mat-button-toggle value="Flatmates" class="togle-btn">Flatmates</mat-button-toggle>
+                </mat-button-toggle-group>
+                <div>
+                    <button class="long-width-btn" (click)="submit()">Start Posting Free Property Ad </button>
+                </div>
+            </div>
+        </div>
+        <mat-horizontal-stepper #stepper class="show-mode-display" linear *ngIf="displayStepper">
+            <mat-step [completed]="PropertyDetailsInfoCompleted">
+                <ng-template matStepLabel>Property Details</ng-template>
+                <div class="row p-3">
+
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label"> Apartment Type</label>
+
+
+                            <select class="form-control" [(ngModel)]="addApartmentType" [ngClass]="{'invalid-input': addApartmentType=='default' && PropertyDetailsInfo}" name="addApartmentType">
+							<option style="color:rgb(29, 21, 21)" value="default">Select </option>
+							<option style="color:rgb(29, 21, 21)" value="Apartment">Apartment</option>
+
+							<option style="color:rgb(29, 21, 21)" value="Independent_House/Villa">Independent
+								House/Villa</option>
+
+							<option style="color:rgb(29, 21, 21)" value="Gated_Community_Villa">Gated Community Villa
+							</option>
+						</select>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-4">
+
+                        <div class="form-group input-form">
+                            <label class="header-label">Apartment Name</label>
+                            <input type="text" class="form-control" [ngClass]="{'invalid-input': apartmentName=='' && PropertyDetailsInfo}" placeholder="Enter Apartment Name" name="apartmentName" [(ngModel)]="apartmentName">
+                        </div>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">BHK Type </label>
+                            <select class="form-control" [(ngModel)]="addBhkType" name="addBhkType" [ngClass]="{'invalid-input': addBhkType=='default' && PropertyDetailsInfo}">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="1_RK">1 RK</option>
+							<option style="color:rgb(29, 21, 21)" value="1_BHK">1 BHK</option>
+							<option style="color:rgb(29, 21, 21)" value="2_BHK">2 BHK</option>
+							<option style="color:rgb(29, 21, 21)" value="3_BHK">3 BHK</option>
+							<option style="color:rgb(29, 21, 21)" value="4_BHK">4 BHK</option>
+							<option style="color:rgb(29, 21, 21)" value="4+_BHK">4+ BHK</option>
+						</select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row p-3">
+
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Floor</label>
+                            <input type="number" class="form-control" [ngClass]="{'invalid-input': floor=='' && PropertyDetailsInfo}" placeholder="Enter Floor" [(ngModel)]="floor" name="floor">
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Total Floor</label>
+                            <input type="number" class="form-control" [ngClass]="{'invalid-input': totalFloor=='' && PropertyDetailsInfo}" placeholder="Total No of Floor" name="totalFloor" [(ngModel)]="totalFloor">
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">Property Age </label>
+                            <select class="form-control" [(ngModel)]="propertyAge" name="propertyAge" [ngClass]="{'invalid-input': propertyAge=='default' && PropertyDetailsInfo }">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="under_construction">Under Construction</option>
+							<option style="color:rgb(29, 21, 21)" value="less_than_1_year">Less than 1 year</option>
+							<option style="color:rgb(29, 21, 21)" value="1_3_year">1-3 years</option>
+							<option style="color:rgb(29, 21, 21)" value="3_5_year">3-5 years</option>
+							<option style="color:rgb(29, 21, 21)" value="5_10_year">5-10 years</option>
+							<option style="color:rgb(29, 21, 21)" value="more_than_10_year">More than 10 years</option>
+
+						</select>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Facing </label>
+
+
+                            <select class="form-control" [(ngModel)]="propertyFacing" name="propertyFacing" [ngClass]="{'invalid-input': propertyFacing=='default' && PropertyDetailsInfo }">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="North">North</option>
+							<option style="color:rgb(29, 21, 21)" value="South">South</option>
+							<option style="color:rgb(29, 21, 21)" value="East">East</option>
+							<option style="color:rgb(29, 21, 21)" value="North-East">North-East</option>
+							<option style="color:rgb(29, 21, 21)" value="South-East">South-East</option>
+							<option style="color:rgb(29, 21, 21)" value="North-West">North-West</option>
+							<option style="color:rgb(29, 21, 21)" value="South-West">South-West</option>
+							<option style="color:rgb(29, 21, 21)" value="Don't Know">Don't Know</option>
+
+						</select>
+
+
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Property size </label>
+                            <div class="textflex">
+                                <input type="text" style="max-width: 60%;" class="form-control cust-radius-right" [ngClass]="{'invalid-input': propertySize=='' && PropertyDetailsInfo}" placeholder="Property size" [(ngModel)]="propertySize" name="propertySize">
+                                <input type="text" style="max-width: 40%;" class="form-control cust-radius-left" [disabled]="true" placeholder="sq/ft">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <button mat-button class="btn btn-align" (click)="goNext('PropertyDetailsInfo',stepper)">Save & Continue</button>
+
+                </div>
+            </mat-step>
+            <mat-step [completed]="LocalityDetailsCompleted">
+                <ng-template matStepLabel>Locality Details</ng-template>
+                <div class="row p-3">
+                    <!-- <div class="row">
+					<div style="float:right">
+						<img [src]="url==''?'assets/img/profile-icon.png':url" class="profile_img">
+						<input type='file' (change)="onSelectFile($event)" accept=".png,.jpeg,.jpg">
+					</div>
+				</div> -->
+                    <div class="col-sm-4">
+
+                        <div class="form-group input-form">
+                            <label class="header-label">City </label>
+                            <input type="text" class="form-control" [ngClass]="{'invalid-input': propertyCity=='' && LocalityDetailsInfo}" placeholder="Enter City" [(ngModel)]="propertyCity" name="propertyCity">
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">Locality </label>
+                            <input type="text" class="form-control" [ngClass]="{'invalid-input': propertyLocality=='' && LocalityDetailsInfo}" placeholder="Enter Locality" [(ngModel)]="propertyLocality" name="propertyLocality">
+                        </div><br>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">Street Address</label>
+                            <input type="text" class="form-control" [ngClass]="{'invalid-input': streetAddress=='' && LocalityDetailsInfo}" placeholder="Enter Street Address" [(ngModel)]="streetAddress" name="streetAddress">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row p-3">
+
+                    <img src="assets/img/googlemap.png" class="map-img">
+
+                </div>
+                <div class="row btn-align">
+                    <button mat-button matStepperPrevious class="btn">Back</button>
+                    <button mat-button class="btn" (click)="goNext('LocalityDetailsInfo',stepper)">Save & Continue</button>
+
+                </div>
+
+            </mat-step>
+
+            <mat-step [completed]="RentalDetailsCompleted">
+                <ng-template matStepLabel>Rental Details</ng-template>
+                <div class="row p-3">
+                    <!-- <div class="row">
+					<div style="float:right">
+						<img [src]="url==''?'assets/img/profile-icon.png':url" class="profile_img">
+						<input type='file' (change)="onSelectFile($event)" accept=".png,.jpeg,.jpg">
+					</div>
+				</div> -->
+                    <div class="col-sm-4">
+
+                        <label id="header-label">Available For lease</label>
+                        <div class="form-group input-form">
+                            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="availableForLease" name="availableForLease">
+                                <mat-radio-button class="example-radio-button" *ngFor="let a of availableForLeaseList" [value]="a">
+                                    {{a}}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">Expected Rent </label>
+                            <input type="number" class="form-control" placeholder="Enter Expected Rent" [ngClass]="{'invalid-input': expectedRent=='' && RentalDetailsInfo}" [(ngModel)]="expectedRent" name="expectedRent">
+                        </div><br>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">Expected Deposite</label>
+                            <input type="number" class="form-control" [ngClass]="{'invalid-input': expectedDepposite=='' && RentalDetailsInfo}" placeholder="Enter Expected Deposite" [(ngModel)]="expectedDeposite" name="expectedDeposite">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row p-3">
+
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Maintenance</label>
+                            <select class="form-control" [ngClass]="{'invalid-input': maintenance=='default' && RentalDetailsInfo}" [(ngModel)]="maintenance" name="maintenance" [ngClass]="{'invalid-input': selectedCategory=='default' }">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="maintenance_Included">Maintenance Included
+							</option>
+							<option style="color:rgb(29, 21, 21)" value="maintenance_Extra">Maintenance Extra</option>
+
+						</select>
+
+                        </div><br>
+
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Prefered Tenants</label>
+                            <select class="form-control" [ngClass]="{'invalid-input': preferedTenants=='default' && RentalDetailsInfo}" [(ngModel)]="preferedTenants" name="preferedTenants" [ngClass]="{'invalid-input': selectedCategory=='default' }">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="Doesn't_Matter">Doesn't Matter</option>
+							<option style="color:rgb(29, 21, 21)" value="Family">Family</option>
+							<option style="color:rgb(29, 21, 21)" value="Bachelor">Bachelor</option>
+							<option style="color:rgb(29, 21, 21)" value="Company">Company</option>
+
+						</select>
+
+                        </div>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="header-label">Available From</label>
+                        <div class="form-group input-form">
+
+                            <!-- <mat-label>Choose a date</mat-label> -->
+                            <mat-form-field style="    display: inline-flex;
+						align-items: baseline;
+						box-sizing: border-box;
+						width: 100%;
+						color: #495057;
+						background-color: #fff;
+						background-clip: padding-box;
+						border: 1px solid #ced4da !important;
+						border-radius: .25rem;
+						transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+						height: calc(1.5em + .75rem + 2px);">
+                                <mat-label>Choose a date</mat-label>
+                                <input matInput [matDatepicker]="picker">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                            <!-- <input type="text" class="form-control" placeholder="Street Address" [(ngModel)]="propertyAvailableFrom"> -->
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Furnishing</label>
+                            <select class="form-control" [(ngModel)]="furnishing" name="furnishing" [ngClass]="{'invalid-input': furnishing=='default' && RentalDetailsInfo}">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="Fully_Furnished">Fully Furnished</option>
+							<option style="color:rgb(29, 21, 21)" value="Semi_Furnished">Semi Furnished</option>
+							<option style="color:rgb(29, 21, 21)" value="Unfurnished">Unfurnished</option>
+
+
+						</select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Parking</label>
+                            <select class="form-control" [(ngModel)]="parking" name="parking" [ngClass]="{'invalid-input': parking=='default' && RentalDetailsInfo}">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="Bike">Bike</option>
+							<option style="color:rgb(29, 21, 21)" value="Car">Car</option>
+							<option style="color:rgb(29, 21, 21)" value="Bike_Car">Bike & Car</option>
+							<option style="color:rgb(29, 21, 21)" value="None">None</option>
+
+						</select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row btn-align">
+                    <button mat-button matStepperPrevious class="btn">Back</button>
+                    <button mat-button class="btn" (click)="goNext('RentalDetailsInfo',stepper)">Save & Continue</button>
+
+                </div>
+            </mat-step>
+            <mat-step [completed]="AmenitiesDetailsCompeted">
+                <ng-template matStepLabel>Amenities Details</ng-template>
+                <div class="row p-3">
+                    <!-- <div class="row">
+					<div style="float:right">
+						<img [src]="url==''?'assets/img/profile-icon.png':url" class="profile_img">
+						<input type='file' (change)="onSelectFile($event)" accept=".png,.jpeg,.jpg">
+					</div>
+				</div> -->
+                    <div class="col-sm-2">
+
+
+                        <div class="form-group input-form">
+                            <label class="header-label">Bathrooms</label>
+                            <input type="number" class="form-control" [ngClass]="{'invalid-input': bathrooms=='' && AmenitiesDetailsInfo}" placeholder="No of Bathrooms" [(ngModel)]="bathrooms" name="bathrooms">
+                        </div>
+
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Balcony</label>
+                            <input type="number" class="form-control" [ngClass]="{'invalid-input': balcony=='' && AmenitiesDetailsInfo}" placeholder="No of Balcony" [(ngModel)]="balcony" name="balcony">
+                        </div><br>
+
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Water Supply</label>
+                            <select class="form-control" [ngClass]="{'invalid-input': waterSupply=='default' && AmenitiesDetailsInfo}" [(ngModel)]="waterSupply" name="waterSupply" [ngClass]="{'invalid-input': selectedCategory=='default' }">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="Borewell">Borewell</option>
+							<option style="color:rgb(29, 21, 21)" value="Carporation">Carporation</option>
+							<option style="color:rgb(29, 21, 21)" value="Both">Both</option>
+
+
+						</select>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Gym</label>
+                            <select class="form-control" [(ngModel)]="gym" name="gym" [ngClass]="{'invalid-input': gym=='default' && AmenitiesDetailsInfo}">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="Yes">Yes</option>
+							<option style="color:rgb(29, 21, 21)" value="No">No</option>
+
+
+						</select>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Non Veg Allowed</label>
+                            <select class="form-control" [(ngModel)]="nonVegAllowed" name="nonVegAllowed" [ngClass]="{'invalid-input': nonVegAllowed=='default' && AmenitiesDetailsInfo}">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="Yes">Yes</option>
+							<option style="color:rgb(29, 21, 21)" value="No">No</option>
+						</select>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Gateway Community</label>
+                            <select class="form-control" [ngClass]="{'invalid-input': gatewayCommunity=='default' && AmenitiesDetailsInfo}" [(ngModel)]="gatewayCommunity" name="gatewayCommunity">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="Yes">Yes</option>
+							<option style="color:rgb(29, 21, 21)" value="No">No</option>
+						</select>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row p-3">
+
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">Who will show House</label>
+                            <select class="form-control" [ngClass]="{'invalid-input': whoWillShowHouse=='default' && AmenitiesDetailsInfo}" [(ngModel)]="whoWillShowHouse" name="whoWillShowHouse" [ngClass]="{'invalid-input': selectedCategory=='default' }">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="I_will_show">I will show</option>
+							<option style="color:rgb(29, 21, 21)" value="Need_Help">Need Help</option>
+							<option style="color:rgb(29, 21, 21)" value="Neighbours">Neighbours</option>
+							<option style="color:rgb(29, 21, 21)" value="Tenants">Tenants</option>
+							<option style="color:rgb(29, 21, 21)" value="Security">Security</option>
+							<option style="color:rgb(29, 21, 21)" value="Others">Others</option>
+
+						</select>
+
+                        </div><br>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">Secondary No</label>
+                            <input type="text" class="form-control" [ngClass]="{'invalid-input': secondaryNo=='' && AmenitiesDetailsInfo}" placeholder="Enter Secondary No" [(ngModel)]="secondaryNo" name="secondaryNo">
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <div class="row btn-align">
+                    <button mat-button matStepperPrevious class="btn">Back</button>
+                    <button mat-button class="btn" (click)="goNext('AmenitiesDetailsInfo',stepper)">Save & Continue</button>
+
+                </div>
+            </mat-step>
+
+            <mat-step [completed]="AvailabilityDetailsCompleted">
+                <ng-template matStepLabel>Availability Details</ng-template>
+                <div class="row p-3">
+                    <!-- <div class="row">
+					<div style="float:right">
+						<img [src]="url==''?'assets/img/profile-icon.png':url" class="profile_img">
+						<input type='file' (change)="onSelectFile($event)" accept=".png,.jpeg,.jpg">
+					</div>
+				</div> -->
+                    <div class="col-sm-4">
+
+
+                        <div class="form-group input-form">
+                            <label class="header-label">Availability</label>
+                            <select class="form-control" [ngClass]="{'invalid-input': availability=='default' && finish}" [(ngModel)]="availability" name="availability" [ngClass]="{'invalid-input': selectedCategory=='default' }">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="Only_Weekends(Saturday-Sunday)">Only
+								Weekends(Saturday-Sunday)</option>
+							<option style="color:rgb(29, 21, 21)" value="Only_Weekdays(Monday-Friday)">Only
+								Weekdays(Monday-Friday)</option>
+							<option style="color:rgb(29, 21, 21)" value="Everyday(Monday-Sunday)">
+								Everyday(Monday-Sunday)</option>
+
+
+						</select>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">Start Time</label>
+                            <input type="text" class="form-control" [ngClass]="{'invalid-input': startTime=='' && finish}" placeholder="Start Time" [(ngModel)]="startTime" name="startTime">
+                        </div><br>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">End Time</label>
+                            <input type="text" class="form-control" [ngClass]="{'invalid-input': endTime=='' && finish}" placeholder="End Time" [(ngModel)]="endTime" name="endTime">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col-sm-4">
+
+
+                        <!-- <input [ngxTimepicker]="picker">
+<ngx-material-timepicker #picker></ngx-material-timepicker> -->
+                        <!-- <div class="col-sm-4">
+					<div class="form-group input-form">
+						<label class="header-label">Upload Property Images</label>
+						<input type="file" class="form-control" [(ngModel)]="userImg name="userState">
+					</div>
+
+				</div> -->
+                        <!-- <mat-form-field>
+					<input matInput [matDatepicker]="dp3" disabled placeholder="Choose date">
+					<mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+					<mat-datepicker #dp3 disabled="false"></mat-datepicker>
+				</mat-form-field> -->
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="custom-file-upload">
+								<input type="file"  (change)="onSelectFile($event)" accept=".png,.jpeg,.jpg" multiple/>
+								Upload Property Images
+							</label>
+                            <div style="padding: 2%;" *ngIf="imageFiles.length>0">
+                                <label class="header-label" style="color: #187318;"><i class="fa fa-check" aria-hidden="true"> {{imageFiles.length}} images selected</i></label>
+                            </div>
+                            <div style="padding: 2%;" *ngIf="imageFiles.length>3">
+                                <label class="header-label" style="color: red;">You can upload only 3 images</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row p-3 btn-align">
+                    <button mat-button matStepperPrevious class="btn">Back</button>
+                    <button type="submit" mat-button (click)="goNext('finish',stepper,addPropertyForm.value)" class="btn">Finish</button>
+                </div>
+
+            </mat-step>
+
+        </mat-horizontal-stepper>
+        <mat-vertical-stepper #stepper1 class="show-mode-none" linear *ngIf="displayStepper">
+            <mat-step [completed]="PropertyDetailsInfoCompleted">
+                <ng-template matStepLabel>Property Details</ng-template>
+                <div class="row p">
+
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label"> Apartment Type</label>
+
+
+                            <select class="form-control" [(ngModel)]="addApartmentType" [ngClass]="{'invalid-input': addApartmentType=='default' && PropertyDetailsInfo}" name="addApartmentType">
+							<option style="color:rgb(29, 21, 21)" value="default">Select </option>
+							<option style="color:rgb(29, 21, 21)" value="Apartment">Apartment</option>
+
+							<option style="color:rgb(29, 21, 21)" value="Independent_House/Villa">Independent
+								House/Villa</option>
+
+							<option style="color:rgb(29, 21, 21)" value="Gated_Community_Villa">Gated Community Villa
+							</option>
+						</select>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-4">
+
+                        <div class="form-group input-form">
+                            <label class="header-label">Apartment Name</label>
+                            <input type="text" class="form-control" [ngClass]="{'invalid-input': apartmentName=='' && PropertyDetailsInfo}" placeholder="Enter Apartment Name" name="apartmentName" [(ngModel)]="apartmentName">
+                        </div>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">BHK Type </label>
+                            <select class="form-control" [(ngModel)]="addBhkType" name="addBhkType" [ngClass]="{'invalid-input': addBhkType=='default' && PropertyDetailsInfo}">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="1_RK">1 RK</option>
+							<option style="color:rgb(29, 21, 21)" value="1_BHK">1 BHK</option>
+							<option style="color:rgb(29, 21, 21)" value="2_BHK">2 BHK</option>
+							<option style="color:rgb(29, 21, 21)" value="3_BHK">3 BHK</option>
+							<option style="color:rgb(29, 21, 21)" value="4_BHK">4 BHK</option>
+							<option style="color:rgb(29, 21, 21)" value="4+_BHK">4+ BHK</option>
+						</select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row p">
+
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Floor</label>
+                            <input type="number" class="form-control" [ngClass]="{'invalid-input': floor=='' && PropertyDetailsInfo}" placeholder="Enter Floor" [(ngModel)]="floor" name="floor">
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Total Floor</label>
+                            <input type="number" class="form-control" [ngClass]="{'invalid-input': totalFloor=='' && PropertyDetailsInfo}" placeholder="Total No of Floor" name="totalFloor" [(ngModel)]="totalFloor">
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">Property Age </label>
+                            <select class="form-control" [(ngModel)]="propertyAge" name="propertyAge" [ngClass]="{'invalid-input': propertyAge=='default' && PropertyDetailsInfo }">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="under_construction">Under Construction</option>
+							<option style="color:rgb(29, 21, 21)" value="less_than_1_year">Less than 1 year</option>
+							<option style="color:rgb(29, 21, 21)" value="1_3_year">1-3 years</option>
+							<option style="color:rgb(29, 21, 21)" value="3_5_year">3-5 years</option>
+							<option style="color:rgb(29, 21, 21)" value="5_10_year">5-10 years</option>
+							<option style="color:rgb(29, 21, 21)" value="more_than_10_year">More than 10 years</option>
+
+						</select>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Facing </label>
+
+
+                            <select class="form-control" [(ngModel)]="propertyFacing" name="propertyFacing" [ngClass]="{'invalid-input': propertyFacing=='default' && PropertyDetailsInfo }">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="North">North</option>
+							<option style="color:rgb(29, 21, 21)" value="South">South</option>
+							<option style="color:rgb(29, 21, 21)" value="East">East</option>
+							<option style="color:rgb(29, 21, 21)" value="North-East">North-East</option>
+							<option style="color:rgb(29, 21, 21)" value="South-East">South-East</option>
+							<option style="color:rgb(29, 21, 21)" value="North-West">North-West</option>
+							<option style="color:rgb(29, 21, 21)" value="South-West">South-West</option>
+							<option style="color:rgb(29, 21, 21)" value="Don't Know">Don't Know</option>
+
+						</select>
+
+
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Property size </label>
+                            <div class="textflex">
+                                <input type="text" style="max-width: 60%;" class="form-control cust-radius-right" [ngClass]="{'invalid-input': propertySize=='' && PropertyDetailsInfo}" placeholder="Property size" [(ngModel)]="propertySize" name="propertySize">
+                                <input type="text" style="max-width: 40%;" class="form-control cust-radius-left" [disabled]="true" placeholder="sq/ft">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <button mat-button class="btn btn-align" (click)="goNext('PropertyDetailsInfo',stepper1)">Save & Continue</button>
+
+                </div>
+            </mat-step>
+            <mat-step [completed]="LocalityDetailsCompleted">
+                <ng-template matStepLabel>Locality Details</ng-template>
+                <div class="row p">
+                    <!-- <div class="row">
+					<div style="float:right">
+						<img [src]="url==''?'assets/img/profile-icon.png':url" class="profile_img">
+						<input type='file' (change)="onSelectFile($event)" accept=".png,.jpeg,.jpg">
+					</div>
+				</div> -->
+                    <div class="col-sm-4">
+
+                        <div class="form-group input-form">
+                            <label class="header-label">City </label>
+                            <input type="text" class="form-control" [ngClass]="{'invalid-input': propertyCity=='' && LocalityDetailsInfo}" placeholder="Enter City" [(ngModel)]="propertyCity" name="propertyCity">
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">Locality </label>
+                            <input type="text" class="form-control" [ngClass]="{'invalid-input': propertyLocality=='' && LocalityDetailsInfo}" placeholder="Enter Locality" [(ngModel)]="propertyLocality" name="propertyLocality">
+                        </div><br>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">Street Address</label>
+                            <input type="text" class="form-control" [ngClass]="{'invalid-input': streetAddress=='' && LocalityDetailsInfo}" placeholder="Enter Street Address" [(ngModel)]="streetAddress" name="streetAddress">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row p">
+
+                    <img src="assets/img/googlemap.png" class="map-img">
+
+                </div>
+                <div class="row btn-align">
+                    <button mat-button matStepperPrevious class="btn">Back</button>
+                    <button mat-button class="btn" (click)="goNext('LocalityDetailsInfo',stepper1)">Save & Continue</button>
+
+                </div>
+
+            </mat-step>
+
+            <mat-step [completed]="RentalDetailsCompleted">
+                <ng-template matStepLabel>Rental Details</ng-template>
+                <div class="row p">
+                    <!-- <div class="row">
+					<div style="float:right">
+						<img [src]="url==''?'assets/img/profile-icon.png':url" class="profile_img">
+						<input type='file' (change)="onSelectFile($event)" accept=".png,.jpeg,.jpg">
+					</div>
+				</div> -->
+                    <div class="col-sm-4">
+
+                        <label id="header-label">Available For lease</label>
+                        <div class="form-group input-form">
+                            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="availableForLease" name="availableForLease">
+                                <mat-radio-button class="example-radio-button" *ngFor="let a of availableForLeaseList" [value]="a">
+                                    {{a}}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">Expected Rent </label>
+                            <input type="number" class="form-control" placeholder="Enter Expected Rent" [ngClass]="{'invalid-input': expectedRent=='' && RentalDetailsInfo}" [(ngModel)]="expectedRent" name="expectedRent">
+                        </div><br>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">Expected Deposite</label>
+                            <input type="number" class="form-control" [ngClass]="{'invalid-input': expectedDepposite=='' && RentalDetailsInfo}" placeholder="Enter Expected Deposite" [(ngModel)]="expectedDeposite" name="expectedDeposite">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row p">
+
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Maintenance</label>
+                            <select class="form-control" [ngClass]="{'invalid-input': maintenance=='default' && RentalDetailsInfo}" [(ngModel)]="maintenance" name="maintenance" [ngClass]="{'invalid-input': selectedCategory=='default' }">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="maintenance_Included">Maintenance Included
+							</option>
+							<option style="color:rgb(29, 21, 21)" value="maintenance_Extra">Maintenance Extra</option>
+
+						</select>
+
+                        </div><br>
+
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Prefered Tenants</label>
+                            <select class="form-control" [ngClass]="{'invalid-input': preferedTenants=='default' && RentalDetailsInfo}" [(ngModel)]="preferedTenants" name="preferedTenants" [ngClass]="{'invalid-input': selectedCategory=='default' }">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="Doesn't_Matter">Doesn't Matter</option>
+							<option style="color:rgb(29, 21, 21)" value="Family">Family</option>
+							<option style="color:rgb(29, 21, 21)" value="Bachelor">Bachelor</option>
+							<option style="color:rgb(29, 21, 21)" value="Company">Company</option>
+
+						</select>
+
+                        </div>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="header-label">Available From</label>
+                        <div class="form-group input-form">
+
+                            <!-- <mat-label>Choose a date</mat-label> -->
+                            <mat-form-field style="    display: inline-flex;
+						align-items: baseline;
+						box-sizing: border-box;
+						width: 100%;
+						color: #495057;
+						background-color: #fff;
+						background-clip: padding-box;
+						border: 1px solid #ced4da !important;
+						border-radius: .25rem;
+						transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+						height: calc(1.5em + .75rem + 2px);">
+                                <mat-label>Choose a date</mat-label>
+                                <input matInput [matDatepicker]="picker">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                            <!-- <input type="text" class="form-control" placeholder="Street Address" [(ngModel)]="propertyAvailableFrom"> -->
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Furnishing</label>
+                            <select class="form-control" [(ngModel)]="furnishing" name="furnishing" [ngClass]="{'invalid-input': furnishing=='default' && RentalDetailsInfo}">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="Fully_Furnished">Fully Furnished</option>
+							<option style="color:rgb(29, 21, 21)" value="Semi_Furnished">Semi Furnished</option>
+							<option style="color:rgb(29, 21, 21)" value="Unfurnished">Unfurnished</option>
+
+
+						</select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Parking</label>
+                            <select class="form-control" [(ngModel)]="parking" name="parking" [ngClass]="{'invalid-input': parking=='default' && RentalDetailsInfo}">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="Bike">Bike</option>
+							<option style="color:rgb(29, 21, 21)" value="Car">Car</option>
+							<option style="color:rgb(29, 21, 21)" value="Bike_Car">Bike & Car</option>
+							<option style="color:rgb(29, 21, 21)" value="None">None</option>
+
+						</select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row btn-align">
+                    <button mat-button matStepperPrevious class="btn">Back</button>
+                    <button mat-button class="btn" (click)="goNext('RentalDetailsInfo',stepper1)">Save & Continue</button>
+
+                </div>
+            </mat-step>
+            <mat-step [completed]="AmenitiesDetailsCompeted">
+                <ng-template matStepLabel>Amenities Details</ng-template>
+                <div class="row p">
+                    <!-- <div class="row">
+					<div style="float:right">
+						<img [src]="url==''?'assets/img/profile-icon.png':url" class="profile_img">
+						<input type='file' (change)="onSelectFile($event)" accept=".png,.jpeg,.jpg">
+					</div>
+				</div> -->
+                    <div class="col-sm-2">
+
+
+                        <div class="form-group input-form">
+                            <label class="header-label">Bathrooms</label>
+                            <input type="number" class="form-control" [ngClass]="{'invalid-input': bathrooms=='' && AmenitiesDetailsInfo}" placeholder="No of Bathrooms" [(ngModel)]="bathrooms" name="bathrooms">
+                        </div>
+
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Balcony</label>
+                            <input type="number" class="form-control" [ngClass]="{'invalid-input': balcony=='' && AmenitiesDetailsInfo}" placeholder="No of Balcony" [(ngModel)]="balcony" name="balcony">
+                        </div><br>
+
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Water Supply</label>
+                            <select class="form-control" [ngClass]="{'invalid-input': waterSupply=='default' && AmenitiesDetailsInfo}" [(ngModel)]="waterSupply" name="waterSupply" [ngClass]="{'invalid-input': selectedCategory=='default' }">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="Borewell">Borewell</option>
+							<option style="color:rgb(29, 21, 21)" value="Carporation">Carporation</option>
+							<option style="color:rgb(29, 21, 21)" value="Both">Both</option>
+
+
+						</select>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Gym</label>
+                            <select class="form-control" [(ngModel)]="gym" name="gym" [ngClass]="{'invalid-input': gym=='default' && AmenitiesDetailsInfo}">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="Yes">Yes</option>
+							<option style="color:rgb(29, 21, 21)" value="No">No</option>
+
+
+						</select>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Non Veg Allowed</label>
+                            <select class="form-control" [(ngModel)]="nonVegAllowed" name="nonVegAllowed" [ngClass]="{'invalid-input': nonVegAllowed=='default' && AmenitiesDetailsInfo}">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="Yes">Yes</option>
+							<option style="color:rgb(29, 21, 21)" value="No">No</option>
+						</select>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-group input-form">
+                            <label class="header-label">Gateway Community</label>
+                            <select class="form-control" [ngClass]="{'invalid-input': gatewayCommunity=='default' && AmenitiesDetailsInfo}" [(ngModel)]="gatewayCommunity" name="gatewayCommunity">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="Yes">Yes</option>
+							<option style="color:rgb(29, 21, 21)" value="No">No</option>
+						</select>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row p">
+
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">Who will show House</label>
+                            <select class="form-control" [ngClass]="{'invalid-input': whoWillShowHouse=='default' && AmenitiesDetailsInfo}" [(ngModel)]="whoWillShowHouse" name="whoWillShowHouse" [ngClass]="{'invalid-input': selectedCategory=='default' }">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="I_will_show">I will show</option>
+							<option style="color:rgb(29, 21, 21)" value="Need_Help">Need Help</option>
+							<option style="color:rgb(29, 21, 21)" value="Neighbours">Neighbours</option>
+							<option style="color:rgb(29, 21, 21)" value="Tenants">Tenants</option>
+							<option style="color:rgb(29, 21, 21)" value="Security">Security</option>
+							<option style="color:rgb(29, 21, 21)" value="Others">Others</option>
+
+						</select>
+
+                        </div><br>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">Secondary No</label>
+                            <input type="text" class="form-control" [ngClass]="{'invalid-input': secondaryNo=='' && AmenitiesDetailsInfo}" placeholder="Enter Secondary No" [(ngModel)]="secondaryNo" name="secondaryNo">
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <div class="row btn-align">
+                    <button mat-button matStepperPrevious class="btn">Back</button>
+                    <button mat-button class="btn" (click)="goNext('AmenitiesDetailsInfo',stepper1)">Save & Continue</button>
+
+                </div>
+            </mat-step>
+
+            <mat-step [completed]="AvailabilityDetailsCompleted">
+                <ng-template matStepLabel>Availability Details</ng-template>
+                <div class="row p">
+                    <!-- <div class="row">
+					<div style="float:right">
+						<img [src]="url==''?'assets/img/profile-icon.png':url" class="profile_img">
+						<input type='file' (change)="onSelectFile($event)" accept=".png,.jpeg,.jpg">
+					</div>
+				</div> -->
+                    <div class="col-sm-4">
+
+
+                        <div class="form-group input-form">
+                            <label class="header-label">Availability</label>
+                            <select class="form-control" [ngClass]="{'invalid-input': availability=='default' && finish}" [(ngModel)]="availability" name="availability" [ngClass]="{'invalid-input': selectedCategory=='default' }">
+							<option style="color:rgb(29, 21, 21)" value="default">Select</option>
+							<option style="color:rgb(29, 21, 21)" value="Only_Weekends(Saturday-Sunday)">Only
+								Weekends(Saturday-Sunday)</option>
+							<option style="color:rgb(29, 21, 21)" value="Only_Weekdays(Monday-Friday)">Only
+								Weekdays(Monday-Friday)</option>
+							<option style="color:rgb(29, 21, 21)" value="Everyday(Monday-Sunday)">
+								Everyday(Monday-Sunday)</option>
+
+
+						</select>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">Start Time</label>
+                            <input type="text" class="form-control" [ngClass]="{'invalid-input': startTime=='' && finish}" placeholder="Start Time" [(ngModel)]="startTime" name="startTime">
+                        </div><br>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="header-label">End Time</label>
+                            <input type="text" class="form-control" [ngClass]="{'invalid-input': endTime=='' && finish}" placeholder="End Time" [(ngModel)]="endTime" name="endTime">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row p">
+                    <div class="col-sm-4">
+
+
+                        <!-- <input [ngxTimepicker]="picker">
+<ngx-material-timepicker #picker></ngx-material-timepicker> -->
+                        <!-- <div class="col-sm-4">
+					<div class="form-group input-form">
+						<label class="header-label">Upload Property Images</label>
+						<input type="file" class="form-control" [(ngModel)]="userImg name="userState">
+					</div>
+
+				</div> -->
+                        <!-- <mat-form-field>
+					<input matInput [matDatepicker]="dp3" disabled placeholder="Choose date">
+					<mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+					<mat-datepicker #dp3 disabled="false"></mat-datepicker>
+				</mat-form-field> -->
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group input-form">
+                            <label class="custom-file-upload">
+								<input type="file"  (change)="onSelectFile($event)" accept=".png,.jpeg,.jpg" multiple/>
+								Upload Property Images
+							</label>
+                            <div style="padding: 2%;" *ngIf="imageFiles.length>0">
+                                <label class="header-label" style="color: #187318;"><i class="fa fa-check" aria-hidden="true"> {{imageFiles.length}} images selected</i></label>
+                            </div>
+                            <div style="padding: 2%;" *ngIf="imageFiles.length>3">
+                                <label class="header-label" style="color: red;">You can upload only 3 images</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row p btn-align">
+                    <button mat-button matStepperPrevious class="btn">Back</button>
+                    <button type="submit" mat-button (click)="goNext('finish',stepper1,addPropertyForm.value)" class="btn">Finish</button>
+                </div>
+
+            </mat-step>
+
+        </mat-vertical-stepper>
+    </form>
+</mat-card>

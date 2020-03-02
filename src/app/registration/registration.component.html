@@ -1,0 +1,230 @@
+<div class="cross-btn">
+    <label (click)="close()">X</label>
+</div>
+
+<div class="alert alert-danger" role="alert" *ngIf="error_msg!=''" style="text-align: center; width: 96%;">
+    {{error_msg}}
+</div>
+<div style="overflow: auto;height: 430px;">
+    <mat-horizontal-stepper #stepper class="show-mode-display" linear>
+        <mat-step [completed]="PesonalInfoCompleted">
+            <ng-template matStepLabel>Personal Info</ng-template>
+            <div class="row row-custome">
+                <!-- <div class="row">
+					<div style="float:right">
+						<img [src]="url==''?'assets/img/profile-icon.png':url" class="profile_img">
+						<input type='file' (change)="onSelectFile($event)" accept=".png,.jpeg,.jpg">
+					</div>
+				</div> -->
+                <div class="col-sm-4">
+                    <div class="form-group input-form">
+                        <label class="header-label">First Name </label>
+                        <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="userFirstName">
+                    </div><br>
+                    <div class="form-group input-form">
+                        <label class="header-label">Email </label>
+                        <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="userEmail">
+                    </div>
+
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group input-form">
+                        <label class="header-label">Middle Name </label>
+                        <input type="text" class="form-control" placeholder="Job Title" [(ngModel)]="userMiddleName">
+                    </div><br>
+                    <div class="form-group input-form">
+                        <label class="header-label">Password</label>
+                        <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="userPassword">
+                    </div>
+
+
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group input-form">
+                        <label class="header-label">Last Name </label>
+                        <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="userLastName">
+                    </div><br>
+                    <div class="form-group input-form">
+                        <label class="header-label">Confirm Password</label>
+                        <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="userConfirmPassword">
+                    </div>
+
+                </div>
+                <div>
+                    <button mat-button class="btn" (click)="goNext('personalInfoNext',stepper)">Next</button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step [completed]="AddressInfoCompleted">
+            <ng-template matStepLabel>Address Details</ng-template>
+            <div class="row row-custome">
+                <!-- <div class="row">
+					<div style="float:right">
+						<img [src]="url==''?'assets/img/profile-icon.png':url" class="profile_img">
+						<input type='file' (change)="onSelectFile($event)" accept=".png,.jpeg,.jpg">
+					</div>
+				</div> -->
+                <div class="col-sm-4">
+                    <div class="form-group input-form">
+                        <label class="header-label">Address </label>
+                        <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="userAddress">
+                    </div><br>
+                    <div class="form-group input-form">
+                        <label class="header-label">City </label>
+                        <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="userCity">
+                    </div>
+
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group input-form">
+                        <label class="header-label">Mobile No </label>
+                        <input type="text" class="form-control" placeholder="Job Title" [(ngModel)]="userMobileNo">
+                    </div><br>
+                    <div class="form-group input-form">
+                        <label class="header-label">State</label>
+                        <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="userState">
+                    </div>
+
+
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group input-form">
+                        <label class="header-label">Country </label>
+                        <input type="text" class="form-control" [(ngModel)]="userCountry">
+                    </div><br>
+                    <div class="form-group input-form">
+                        <label class="header-label">Postal Code</label>
+                        <input type="text" class="form-control" [(ngModel)]="userPostalCode">
+                    </div>
+
+                </div>
+
+            </div>
+            <div>
+                <button mat-button (click)="goNext('finish',stepper)" class="btn">Finish</button>
+                <button mat-button matStepperPrevious class="btn">Back</button>
+            </div>
+        </mat-step>
+
+    </mat-horizontal-stepper>
+
+
+    <mat-vertical-stepper #stepper1 class="show-mode-none" linear>
+        <mat-step [completed]="PesonalInfoCompleted">
+            <ng-template matStepLabel>Personal Info</ng-template>
+            <div class="row row-custome">
+                <!-- <div class="row">
+					<div style="float:right">
+						<img [src]="url==''?'assets/img/profile-icon.png':url" class="profile_img">
+						<input type='file' (change)="onSelectFile($event)" accept=".png,.jpeg,.jpg">
+					</div>
+				</div> -->
+                <div class="col-sm-4">
+                    <div class="form-group input-form">
+                        <label class="header-label">First Name </label>
+                        <input type="text" class="form-control" placeholder="Your First Name" [(ngModel)]="userFirstName">
+                    </div>
+                    <div class="form-group input-form">
+                        <label class="header-label">Middle Name </label>
+                        <input type="text" class="form-control" placeholder="Your Middle Name" [(ngModel)]="userMiddleName">
+                    </div>
+
+
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group input-form">
+                        <label class="header-label">Last Name </label>
+                        <input type="text" class="form-control" placeholder="Your Last Name" [(ngModel)]="userLastName">
+                    </div>
+                    <div class="form-group input-form">
+                        <label class="header-label">Email </label>
+                        <input type="text" class="form-control" placeholder="Your Email" [(ngModel)]="userEmail">
+                    </div>
+
+
+
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group input-form">
+                        <label class="header-label">Password</label>
+                        <input type="text" class="form-control" placeholder="Your Password" [(ngModel)]="userPassword">
+                    </div>
+                    <div class="form-group input-form">
+                        <label class="header-label">Confirm Password</label>
+                        <input type="text" class="form-control" placeholder="Confirm Password" [(ngModel)]="userConfirmPassword">
+                    </div>
+
+                </div>
+                <div>
+                    <button mat-button class="btn" (click)="goNext('personalInfoNext',stepper1)">Next</button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step [completed]="AddressInfoCompleted">
+            <ng-template matStepLabel>Address Details</ng-template>
+            <div class="row row-custome">
+                <!-- <div class="row">
+					<div style="float:right">
+						<img [src]="url==''?'assets/img/profile-icon.png':url" class="profile_img">
+						<input type='file' (change)="onSelectFile($event)" accept=".png,.jpeg,.jpg">
+					</div>
+				</div> -->
+                <div class="col-sm-4">
+                    <div class="form-group input-form">
+                        <label class="header-label">Country </label>
+                        <input type="text" class="form-control" placeholder="Your Country" [(ngModel)]="userCountry">
+                    </div>
+                    <div class="form-group input-form">
+                        <label class="header-label">State</label>
+                        <input type="text" class="form-control" placeholder="Your State" [(ngModel)]="userState">
+                    </div>
+
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group input-form">
+                        <label class="header-label">Address </label>
+                        <input type="text" class="form-control" placeholder="Your Address" [(ngModel)]="userAddress">
+                    </div>
+                    <div class="form-group input-form">
+                        <label class="header-label">City </label>
+                        <input type="text" class="form-control" placeholder="Your City" [(ngModel)]="userCity">
+                    </div>
+
+                </div>
+                <div class="col-sm-4">
+
+
+                    <div class="form-group input-form">
+                        <label class="header-label">Postal Code</label>
+                        <input type="text" class="form-control" placeholder="Your Postal Code" [(ngModel)]="userPostalCode">
+                    </div>
+                    <div class="form-group input-form">
+                        <label class="header-label">Mobile No </label>
+                        <input type="text" class="form-control" placeholder="Your Mobile No" [(ngModel)]="userMobileNo">
+                    </div>
+
+                </div>
+
+            </div>
+            <div>
+                <button mat-button (click)="goNext('finish',stepper1)" class="btn">Finish</button>
+                <button mat-button matStepperPrevious class="btn">Back</button>
+            </div>
+        </mat-step>
+
+    </mat-vertical-stepper>
+</div>
+<div [class.loader-hidden]="!show">
+    <div class="loader-overlay">
+        <div>
+            <mat-spinner *ngIf="show" mode="indeterminate" style="margin:auto;"></mat-spinner>
+        </div>
+    </div>
+</div>

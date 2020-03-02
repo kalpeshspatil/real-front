@@ -1,0 +1,24 @@
+<div class="propertylist-div">
+  <mat-grid-list [cols]="colSize" rowHeight="2:1"  (window:resize)="resize()" [gutterSize]="'10px'">
+    <mat-grid-tile *ngFor="let property of propertylist" >
+      
+       <div class="row fullwidth-row">
+        <div class="col-sm-5">
+
+
+        Photos
+
+
+        </div>
+        <div class="col-sm-7 border-left">
+          <mat-grid-tile-header> {{property.propertyType}}  {{property.bhkType}} in {{property.propertyCity}} </mat-grid-tile-header>
+
+
+        </div>
+       </div>
+      <mat-grid-tile-footer> <fa name="heart-o" style="font-size:20px;"></fa><fa name="heart" style="font-size:20px;color:red" ></fa> </mat-grid-tile-footer>
+    </mat-grid-tile>
+    
+  </mat-grid-list>
+
+</div>

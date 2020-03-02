@@ -1,0 +1,25 @@
+<label class="cross-btn" (click)="close()">X</label>
+<div mat-dailog-header class="login-header" style="border-bottom: 1px solid #979797;">Log In</div>
+<div mat-dialog-content class="m">
+    <div class="login-form" style="padding: 6%;">
+       
+            <div style="margin-top:2%">
+                <input type="text" placeholder="Your Email"  class="form-control"  [(ngModel)]="userEmail"/>
+            </div>
+            <div style="margin-top:2%">
+                <input type="password"  placeholder="Your Password" class="form-control" [(ngModel)]="userPassword"/>
+            </div>
+            <div style="margin-top:2%">
+                <button class="loginbutton" (click)="loginUser()">login</button>
+            </div>
+            <div>
+
+            </div>
+            <div style="text-align: center;">
+                <div style="margin-top: 3%;" class="t">or <a>Forgot Password?</a></div>
+                <div style="margin-top: -1%;" class="t">Don't have an account? <a>Sign up!</a></div>
+            </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,286 @@
+.input-form {
+    margin-top: 6%;
+}
+
+.links-input {
+    font-size: 11px;
+    padding: 3px;
+}
+
+.row-custome {
+    margin-right: 2% !important;
+    margin-left: 2% !important;
+    margin-top: 1% !important;
+}
+
+.margin-rmv {
+    margin-top: 0% !important;
+}
+
+.textflex {
+    display: flex;
+}
+
+.cust-radius-right {
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.cust-radius-left {
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.select-m {
+    width: 100%;
+    height: 34px;
+    background: center;
+    border: 1px solid #cccccc;
+    color: #a29db7;
+    border-radius: 4px;
+}
+
+.btn {
+    background: #1e90ff;
+    color: white;
+    border: none;
+    margin-top: 3%;
+    float: right;
+    margin-right: 5px;
+}
+
+.textArea {
+    height: 280px !important;
+}
+
+.invalid-input {
+    border: 1px solid red !important;
+}
+
+.cross-btn {
+    padding: 1%;
+    text-align: end;
+    color: black;
+}
+
+
+/* For Loader */
+
+.loader-hidden {
+    visibility: hidden;
+}
+
+.loader-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    z-index: 500000;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: column wrap;
+    -moz-flex-flow: column wrap;
+    flex-flow: column wrap;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    text-align: -webkit-center;
+}
+
+.show-mode-none {
+    display: none;
+}
+
+.show-mode-display {
+    display: block;
+}
+
+.profile_img {
+    height: 90px;
+}
+
+
+/* LinkedIn btn css */
+
+.btn-linkedin {
+    width: 200px;
+    height: 33px;
+    border-radius: 4px;
+    border: unset;
+    color: white;
+    background: #0E76A8;
+    margin-top: 3.5%;
+}
+
+.btn-linkedin {
+    background: #0E76A8;
+    color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #084461;
+}
+
+.btn-linkedin:link,
+.btn-linkedin:visited {
+    color: #fff;
+}
+
+.btn-linkedin:active,
+.btn-linkedin:hover {
+    background: #084461;
+    color: #fff;
+}
+
+.icon-linkedin {
+    margin-left: 5px;
+    background: white;
+    color: #0E76A8;
+    margin-right: 10px;
+}
+
+
+/* tooltip css */
+
+
+/* Tooltip container */
+
+.tooltip {
+    /* If you want dots under the hoverable text */
+}
+
+
+/* Tooltip text */
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+
+/* Show the tooltip text when you mouse over the tooltip container */
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.varifiedTextDiv {
+    text-align: center;
+    width: 91%;
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-top: 6%;
+    padding: 4px !important;
+}
+
+.verificationwarningdiv {
+    text-align: center;
+    width: 100%;
+    padding: 4px !important;
+    margin-top: 12px;
+}
+
+.connect-button {
+    display: inline-block;
+    margin-bottom: 1px;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#28a0e5), to(#015e94));
+    background-image: linear-gradient(#28a0e5, #015e94);
+    -webkit-font-smoothing: antialiased;
+    border: 0;
+    padding: 1px;
+    height: 32px;
+    text-decoration: none;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .2);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .2);
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-decoration: none !important;
+}
+
+.connect-button.blue span:before,
+.connect-button span:before {
+    background-image: url(/assets/img/stripeLogo.png);
+}
+
+.connect-button span {
+    display: block;
+    position: relative;
+    padding: 0 12px;
+    height: 30px;
+    background: #1275ff;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#7dc5ee), color-stop(85%, #008cdd), to(#30a2e4));
+    background-image: linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);
+    font-size: 15px;
+    line-height: 30px;
+    color: #fff;
+    font-weight: 700;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+    -webkit-box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, .25);
+    box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, .25);
+    border-radius: 3px;
+    padding-left: 44px;
+}
+
+.connect-button span:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    width: 23px;
+    height: 24px;
+    margin-top: -12px;
+    background-repeat: no-repeat;
+    background-size: 23px 20px;
+}
+
+.header-label {
+    font-weight: 500 !important;
+}
+
+
+/* Mobile Screen */
+
+@media screen and (max-width: 786px) {
+    .show-mode-none {
+        display: block !important;
+    }
+    .btn-linkedin {
+        width: 190px !important;
+    }
+    .show-mode-display {
+        display: none !important;
+    }
+    .icon-linkedin {
+        margin-left: 0px !important;
+    }
+    .header-label {
+        font-size: 12px;
+    }
+    .form-control {
+        font-size: 12px;
+    }
+    .input-form {
+        margin-top: 0%;
+    }
+}

@@ -19,11 +19,11 @@
                 <div class="col-sm-4">
                     <div class="form-group input-form">
                         <label class="header-label">First Name </label>
-                        <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="userFirstName">
+                        <input type="text" class="form-control" placeholder="Your First Name" [(ngModel)]="userFirstName">
                     </div><br>
                     <div class="form-group input-form">
                         <label class="header-label">Email </label>
-                        <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="userEmail">
+                        <input type="text" class="form-control" placeholder="Your Email" [(ngModel)]="userEmail">
                     </div>
 
 
@@ -31,11 +31,11 @@
                 <div class="col-sm-4">
                     <div class="form-group input-form">
                         <label class="header-label">Middle Name </label>
-                        <input type="text" class="form-control" placeholder="Job Title" [(ngModel)]="userMiddleName">
+                        <input type="text" class="form-control" placeholder="Your Middle Name" [(ngModel)]="userMiddleName">
                     </div><br>
                     <div class="form-group input-form">
                         <label class="header-label">Password</label>
-                        <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="userPassword">
+                        <input type="text" class="form-control" placeholder="Your Password" [(ngModel)]="userPassword">
                     </div>
 
 
@@ -44,11 +44,11 @@
                 <div class="col-sm-4">
                     <div class="form-group input-form">
                         <label class="header-label">Last Name </label>
-                        <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="userLastName">
+                        <input type="text" class="form-control" placeholder="Your Last Name" [(ngModel)]="userLastName">
                     </div><br>
                     <div class="form-group input-form">
                         <label class="header-label">Confirm Password</label>
-                        <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="userConfirmPassword">
+                        <input type="text" class="form-control" placeholder="Confirm Password" [(ngModel)]="userConfirmPassword">
                     </div>
 
                 </div>
@@ -69,11 +69,11 @@
                 <div class="col-sm-4">
                     <div class="form-group input-form">
                         <label class="header-label">Address </label>
-                        <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="userAddress">
+                        <input type="text" class="form-control" placeholder="Your Address" [(ngModel)]="userAddress">
                     </div><br>
                     <div class="form-group input-form">
                         <label class="header-label">City </label>
-                        <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="userCity">
+                        <input type="text" class="form-control" placeholder="Your City" [(ngModel)]="userCity">
                     </div>
 
 
@@ -81,11 +81,11 @@
                 <div class="col-sm-4">
                     <div class="form-group input-form">
                         <label class="header-label">Mobile No </label>
-                        <input type="text" class="form-control" placeholder="Job Title" [(ngModel)]="userMobileNo">
+                        <input type="text" class="form-control" placeholder="Your Mobile No" [(ngModel)]="userMobileNo">
                     </div><br>
                     <div class="form-group input-form">
                         <label class="header-label">State</label>
-                        <input type="text" class="form-control" placeholder="Company Name" [(ngModel)]="userState">
+                        <input type="text" class="form-control" placeholder="Your State" [(ngModel)]="userState">
                     </div>
 
 
@@ -94,18 +94,18 @@
                 <div class="col-sm-4">
                     <div class="form-group input-form">
                         <label class="header-label">Country </label>
-                        <input type="text" class="form-control" [(ngModel)]="userCountry">
+                        <input type="text" class="form-control" placeholder="Your Country" [(ngModel)]="userCountry">
                     </div><br>
                     <div class="form-group input-form">
                         <label class="header-label">Postal Code</label>
-                        <input type="text" class="form-control" [(ngModel)]="userPostalCode">
+                        <input type="text" class="form-control" placeholder="Your Postal Code" [(ngModel)]="userPostalCode">
                     </div>
 
                 </div>
 
             </div>
             <div>
-                <button mat-button (click)="goNext('finish',stepper)" class="btn">Finish</button>
+                <button mat-button (click)="goNext('finish',stepper)" class="btn">Register</button>
                 <button mat-button matStepperPrevious class="btn">Back</button>
             </div>
         </mat-step>

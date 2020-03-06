@@ -9,7 +9,8 @@ import { MatDialogRef } from '@angular/material';
 })
 export class LoginComponent implements OnInit {
 
-
+  loginError = false;
+  error_message="";
   userEmail="";
   userPassword="";
   constructor(public service:RealService,public dialog:MatDialogRef<LoginComponent>) { }
@@ -33,6 +34,9 @@ export class LoginComponent implements OnInit {
           if(resp.status==1){
             
             this.dialog.close(resp);
+          }else{
+            this.error_message = resp.message;
+			    	this.loginError = true;
           }
 
       });

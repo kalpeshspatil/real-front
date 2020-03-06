@@ -372,6 +372,10 @@ input[type="file"] {
         margin: 1%;
         border: 1px solid #ccc;
     }
+    .togle-btn-big {
+        width: 80% !important;
+    
+    }
     .long-width-btn {
         width: 98% !important;
         border-radius: 4px;

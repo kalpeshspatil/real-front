@@ -14,7 +14,7 @@
 }
 
 .background {
-    background-image: url(assets/img/realbanner.jpg);
+    background-image: url(/assets/img/realbanner.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
@@ -103,12 +103,12 @@ body {
 
 .carousel-control-prev {
     z-index: 20;
-    left: -15% !important;
+    left: -15% ;
 }
 
 .carousel-control-next {
     z-index: 20;
-    right: -15% !important;
+    right: -15% ;
 }
 
 .carousel-caption {
@@ -133,4 +133,10 @@ body {
 
 .cdk-overlay-pane {
     max-width: 97vw !important;
+}
+.alert {
+
+    margin-bottom: unset !important;
+    margin-top: 1px;
+
 }

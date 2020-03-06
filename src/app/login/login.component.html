@@ -1,6 +1,9 @@
 <label class="cross-btn" (click)="close()">X</label>
 <div mat-dailog-header class="login-header" style="border-bottom: 1px solid #979797;">Log In</div>
 <div mat-dialog-content class="m">
+    <div class="alert alert-danger" role="alert" *ngIf="loginError" style="padding: 8px !important;">
+        {{error_message}}
+    </div>
     <div class="login-form" style="padding: 6%;">
        
             <div style="margin-top:2%">

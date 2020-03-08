@@ -26,8 +26,10 @@ ngb-carousel {
 }
 
 ngb-carousel img {
-    width: 20%;
+    width: 18%;
     outline: none;
+    margin-left: 150px;
+    margin-top: 7px;
 }
 
 ngb-carousel {
@@ -89,5 +91,26 @@ ngb-carousel {
     p {
         color: #424d56;
         padding: 10px 9% 20px !important;
+    }
+    ngb-carousel img {
+        width: 12%;
+        margin-left: 50px;
+        outline: none;
+        margin-top: 13px;
+    }
+    h3{
+font-size: 1.25rem;
+
+    }
+    .carousel-caption {
+        position: absolute;
+        right: 15%;
+        bottom: -6px;
+        left: 15%;
+        z-index: 10;
+        padding-bottom: -6px !important;
+        color: #fff;
+        text-align: center;
+        top: 0px !important;
     }
 }

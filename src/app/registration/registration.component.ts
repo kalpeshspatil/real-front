@@ -27,6 +27,7 @@ export class RegistrationComponent implements OnInit {
   show=false;
 
   personalInfoNext = false;
+  addressInfoNext =false;
   AddressInfoCompleted=false;
   PesonalInfoCompleted = false;
   finish = false;
@@ -59,6 +60,8 @@ export class RegistrationComponent implements OnInit {
         this.PesonalInfoCompleted = false;
       }
     } else if (action == "finish") {
+
+      this.addressInfoNext=true;
       let date = new Date();
       let now_utc = Date.UTC(
         date.getUTCFullYear(),
@@ -69,9 +72,29 @@ export class RegistrationComponent implements OnInit {
         date.getUTCSeconds()
       );
       let timestamp = new Date(now_utc).getTime();
-      this.finish = true;
-      //const formData: FormData = new FormData();
 
+      if (
+        this.userAddress != "" &&
+        this.userCity != "" &&
+        this.userState != "" &&
+        this.userCountry != "" &&
+        this.userMobileNo != "" &&
+        this.userPostalCode != ""
+      ) {
+        
+        this.AddressInfoCompleted = true;
+        setTimeout(() => {
+          stepper.next();
+        }, 16);
+      }
+      else{
+        this.AddressInfoCompleted = false;
+
+      }
+
+      
+      //const formData: FormData = new FormData();
+     
       let data: any = {
         userFirstName: this.userFirstName,
         userMiddleName: this.userMiddleName,
@@ -86,7 +109,7 @@ export class RegistrationComponent implements OnInit {
         userMobileNo: this.userMobileNo,
         userPostalCode: this.userPostalCode
       };
-
+      if(this.AddressInfoCompleted==true){
       this.service.userRegistartion(data).then(res => {
         let resp: any = res;
         console.log(resp);
@@ -94,7 +117,7 @@ export class RegistrationComponent implements OnInit {
           this.dialogRef1.close(resp);
         }
       });
-      //}
+     }
     }
   }
   close() {

@@ -57,10 +57,14 @@
     border: 1px solid red !important;
 }
 
+
 .cross-btn {
-    padding: 1%;
-    text-align: end;
-    color: black;
+    color: #1e90ff;
+    background: center;
+    border: none;
+    font-size: 17px;
+    float: right;
+    cursor: pointer !important;
 }
 
 

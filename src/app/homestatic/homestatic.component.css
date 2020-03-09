@@ -90,11 +90,11 @@ ngb-carousel {
     }
     .cap-p {
         color: #424d56;
-        padding: 10px 25% 20px !important;
+        padding: 10px 9% 20px !important;
     }
     ngb-carousel img {
         width: 12%;
-        margin-left: 50px;
+        margin-left: 78px;
         outline: none;
         margin-top: 13px;
     }
@@ -106,7 +106,7 @@ font-size: 1.25rem;
         position: absolute;
         right: 15%;
         bottom: -6px;
-        left: 15%;
+        left: 26%;
         z-index: 10;
         padding-bottom: -6px !important;
         color: #fff;

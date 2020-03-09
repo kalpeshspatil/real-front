@@ -3,7 +3,7 @@
     margin-top: 1%;
 }
 
-p {
+.cap-p{
     color: #424d56;
     padding: 10px 25% 20px;
 }
@@ -88,9 +88,9 @@ ngb-carousel {
     #header-border {
         width: 64% !important;
     }
-    p {
+    .cap-p {
         color: #424d56;
-        padding: 10px 9% 20px !important;
+        padding: 10px 25% 20px !important;
     }
     ngb-carousel img {
         width: 12%;
@@ -113,4 +113,31 @@ font-size: 1.25rem;
         text-align: center;
         top: 0px !important;
     }
+}
+
+@media screen and (max-width: 768px) {
+
+    
+    .cap-p{
+    color: #424d56;
+    padding: 10px 25% 20px;
+}
+ngb-carousel img {
+    width: 12%;
+    margin-left: 156px;
+    outline: none;
+    margin-top: 13px;
+}
+.carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: -6px;
+    left: 23%;
+    z-index: 10;
+    padding-bottom: -6px !important;
+    color: #fff;
+    text-align: center;
+    top: 0px !important;
+}
+
 }
